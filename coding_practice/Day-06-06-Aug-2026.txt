@@ -1,0 +1,52 @@
+Day 01 — Basics
+
+## 🔹 Ansible Task — Install Nginx on Pathnex Server
+
+Rewrite this YAML manually:
+
+---
+- name: Install Nginx on Pathnex server
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+#Writen by me
+# --- it mark start the YAML file (It tells Ansible that a YAML document begins here)
+---
+# It describes what the playbook will do.
+
+- name: install Nginx on pathnex server
+
+# Run this playbook on all servers listed in the Ansible inventory.
+  hosts: all
+
+#Executes tasks with sudo/root privileges.
+  become: yes
+
+# A collection of actions that Ansible executes.
+  tasks:
+
+# This is the name of the task.
+    - name: Install nginx
+
+# The Ansible module used to install, remove, or update packages with YUM.
+      yum:
+
+# Specifies which package to manage.
+        name: nginx
+
+# Makes sure the package exists on the server.
+        state: present
+
+
+# Add from my side 
+Other common values:
+
+present → Install if missing.
+latest → Install or upgrade to the latest version.
+absent → Remove the package.
