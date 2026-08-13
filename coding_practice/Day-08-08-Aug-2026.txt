@@ -1,0 +1,63 @@
+## 🔹 Kubernetes Task — Create Nginx Pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pathnex-pod
+spec:
+  containers:
+    - name: web
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+
+
+#WRITEN BY ME THIS CODE WITH EXPLANTION EACH LINE BY LINE
+
+# This tells Kubernetes which API version to use for this resource.
+# apiVersion defines the Kubernetes API version used to create the resource.
+
+apiVersion: v1
+
+# kind specifies the type of Kubernetes resource we want to create.
+kind = Pod
+
+# metadata contains information that identifies the resource.
+# Here we give our Pod the name:
+metadata:
+  name: pathnex-pod
+
+#You can check it using:
+kubectl get pods
+
+# spec = "What should this Pod contain and how should it run?"
+spec:
+
+# This section defines the container or containers inside the Pod.
+#A Pod can contain one or more containers.
+containers:
+    - name: web
+
+# This tells Kubernetes which container image to use.
+image: nginx:latest
+# nginx is image name or latest is the image tag
+
+# This tells Kubernetes that the container application is listening on port 80.
+ports:
+  - containerPort: 80
+
+
+------------------Now writing this code ---------------------
+
+## 🔹 Kubernetes Task — Create Nginx Pod
+
+apiVersion: v1
+kind: pod
+metadata:
+   name: pathnex-pod
+spec:
+  containers:
+       -name: web
+        image: nginx:latest
+        port:
+         - containerPort: 80
