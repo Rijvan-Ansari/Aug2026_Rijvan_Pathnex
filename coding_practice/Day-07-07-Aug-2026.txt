@@ -1,0 +1,74 @@
+## 🔹 Terraform Task — Create EC2 (c5.xlarge)
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "PathnexEC2" {
+  ami           = "ami-0abcd1234abcd1234"
+  instance_type = "c5.xlarge"
+
+  tags = {
+    Name = "Pathnex-EC2"
+  }
+}
+
+
+# Writen by me this code below
+
+#Provider tells Terraform which cloud/platform we want to work with.
+#Terraform uses the AWS provider to communicate with AWS APIs.
+provider "aws" {
+
+#This tells Terraform where in AWS we want to create the resource
+
+region = "us-east-1"
+
+#This tells Terraform:
+
+#"I want to create an EC2 instance."
+
+resource "<RESOURCE_TYPE>" "<RESOURCE_NAME>"
+resource "aws_instance" "PathnexEC2" {
+
+# PathnexEC2
+
+#This is the name Terraform uses internally to identify this resource.
+
+#It defines the OS/template from which the EC2 instance will be created.
+ami = "ami-0abcd1234abcd1234"
+
+#This defines the size/type of the EC2 instance.
+instance_type = "c5.xlarge"
+
+#Tags are key-value pairs used to identify and organize AWS resources.
+tags = {
+
+#Tags are key-value pairs used to identify and organize AWS resources.
+tags = {
+  Name = "Pathnex-EC2"
+}
+#The EC2 instance will appear with the name:
+Key   = Name
+Value = Pathnex-EC2
+
+Pathnex-EC2
+
+in the AWS console.
+#The braces indicate the end of the block.
+}
+
+# new Start code 
+
+provider "aws" {
+  region "us-east-1"
+}
+
+resource "aws_instance" "PathnexEC2" {
+ami                "ami-0abcd1234abcd1234"
+instance_type = "c5.xlarge"
+
+tags = {
+ name = "Pathnex-EC2"
+}
+}
