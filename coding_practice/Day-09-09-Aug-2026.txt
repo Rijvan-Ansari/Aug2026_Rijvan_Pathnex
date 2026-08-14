@@ -1,0 +1,93 @@
+## 🔹 Shell Script — Print Date & Hostname
+
+#!/bin/bash
+echo "Date: $(date)"
+echo "Hostname: $(hostname)"
+
+
+# Git Integration
+## 🔹 Jenkins Pipeline — Checkout Git
+You will learn how to **checkout a Git repository** and list files.
+
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Pathnex/sample-java-app.git'
+            }
+        }
+        stage('List Files') {
+            steps {
+                sh 'ls -la'
+            }
+        }
+    }
+}
+
+
+# WRITEN BY ME 
+
+#hell Script: Print Date & Hostname
+
+# This is called a shebang.
+#!/bin/bash
+
+# provided it has execute permission:
+chmod +x system_info.sh
+./system_info.sh
+
+# echo prints text to the terminal. $(date) This is called command substitution in Bash.
+echo "Date: $(date)
+
+# Again, $(...) executes a command.
+echo "Hostname: $(hostname)"
+
+# -------------------Jenkins--------------
+
+#Everything inside this block is my Jenkins Pipeline."
+pipeline {
+
+# un this pipeline on any available Jenkins agent.
+agent any
+
+# Jenkins executes them in order.
+stages {
+
+# This creates a stage called:
+stage('Checkout') {
+
+# steps contains the actual commands Jenkins should execute inside the stage.
+steps {
+
+# Checkout the main branch.
+git branch: 'main',
+
+#This tells Jenkins where the Git repository is located.
+ url: 'https://github.com/Pathnex/sample-java-app.git'
+
+# it essentially performs the equivalent of getting the repository into the Jenkins workspace.
+git branch: 'main',
+    url: 'https://github.com/Pathnex/sample-java-app.git'
+
+# his creates another stage called:
+stage('List Files') {
+# Execute a shell command on the Jenkins agent.
+sh 'ls -la'
+
+#----------------------------------------------
+pipelin {
+     agent any
+        stages {
+         stage ('checkout'){
+          steps {
+                 git branch: 'main', url: 'https://github.com/Pathnex/sample-java-app.git'
+                }
+                }
+               stage('List File') {
+                    steps {
+                         sh 'ls -la'
+                 }
+               }
+            }
+         }
