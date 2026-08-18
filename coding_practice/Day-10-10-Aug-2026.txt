@@ -1,0 +1,52 @@
+## 🔹 GitLab CI — Checkout Git
+You will learn how to **checkout a Git repository in GitLab CI**.
+
+stages:
+  - checkout
+
+git-checkout:
+  stage: checkout
+  script:
+    - git clone https://github.com/Pathnex/sample-java-app.git
+    - cd sample-java-app
+    - ls -la
+
+
+# Writen by me with explanation first
+
+# stages defines the order of stages in your pipeline.
+
+#Here you have only one stage: checkout. GitLab executes stages sequentially.
+stages:
+  - checkout
+
+# This is the job name.You can give it almost any meaningful name, for example:
+
+checkout-code:
+
+# Run the git-checkout job inside the checkout stage.It connects the job to the stage you created above.
+
+stage: checkout
+
+# script contains the Linux/shell commands that the GitLab Runner executes.So everything under script runs one by one.
+
+script:
+
+# This downloads/clones the Git repository from GitHub into the GitLab Runner's working directory.
+git clone https://github.com/Pathnex/sample-java-app.git
+
+# cd means Change Directory.After git clone, Git creates the sample-java-app directory
+-cd sample-java-app
+-ls -la
+
+#----------------------------------------------
+
+stages:
+-checkout
+
+git-checkout:
+stage: checkout
+script:
+- git clone https://github.com/Pathnex/sample-java-app.git
+- sample-java-app
+-ls -la
