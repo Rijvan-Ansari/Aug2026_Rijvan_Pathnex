@@ -1,3 +1,63 @@
+
+
+- name: Install and start Nginx on Pathnex hosts
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Enable nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+# Writen by me with explanation each line
+
+# Hum Pathnex hosts par Nginx install aur start karenge
+- name: Install and start Nginx on Pathnex hosts
+# Inventory file mein jitne bhi servers hain, un sab par ye playbook run hogi.
+hosts: all
+# Nginx install karne ke liye generally root permission chahiye.
+become: yes
+sudo yum install nginx
+
+# tasks ke andar hum batate hain ki server par kya-kya kaam karna hai.
+name: Install nginx  #task discription hai
+yum: # yum Ansible module hai jo RPM-based Linux systems par packages manage karta hai.
+name: nginx  #Kaunsa package install karna hai?
+state: present  # Agar Nginx already installed hai → Ansible kuch nahi karega.
+
+#Agar installed nahi hai → Ansible install karega.
+
+service:  #Service ko manage karne ke liye Ansible module.
+name: nginx   # Kaunsi service?
+state: started   # Nginx service abhi running honi chahiye.
+sudo systemctl start nginx
+enabled: yes  # Server reboot hone ke baad Nginx automatically start ho.
+sudo systemctl enable nginx
+
+#--------------------------------------
+-name: install and start nginx on pathnex host
+host: all
+become: yes
+
+task:
+-name: install nginx
+yum:
+name: nginx
+state: present
+
+-name: enable nginx service
+service:
+name: nginx
+state: started
+enabled: yes
+
 ## 🔹 GitLab CI — Checkout Git
 You will learn how to **checkout a Git repository in GitLab CI**.
 
@@ -49,4 +109,4 @@ stage: checkout
 script:
 - git clone https://github.com/Pathnex/sample-java-app.git
 - sample-java-app
--ls -la
+-l
