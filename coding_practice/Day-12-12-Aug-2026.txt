@@ -1,0 +1,43 @@
+## 🔹 Ansible — Create User
+
+---
+- name: Create Pathnex user
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create user pathnex-admin
+      user:
+        name: pathnex-admin
+        shell: /bin/bash
+
+# Indicates the beginning of a YAML document.
+---
+# This is the description of what this playbook is going to do.
+- name: Create Pathnex user
+# Means the task will run on all servers defined in your Ansible inventory.
+hosts: all
+# Ansible will use privilege escalation, normally sudo, so it can perform an administrative operation such as creating a user.
+become: yes
+# Contains the actual work Ansible needs to perform.
+tasks:
+# Just a description displayed when the playbook runs.
+- name: Create user pathnex-admin
+# This is Ansible's user-management module. It manages Linux user accounts.
+user:
+# The username that will be created:
+name: pathnex-admin
+# Sets the user's login shell to Bash.
+shell: /bin/bash
+
+#-----------------------------------------------------
+---
+- name: Create Pathnex user
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create user pathnex-admin
+      user:
+        name: pathnex-admin
+        shell: /bin/bash
