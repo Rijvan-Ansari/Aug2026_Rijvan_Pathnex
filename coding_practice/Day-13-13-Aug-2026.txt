@@ -1,0 +1,67 @@
+## 🔹 Terraform — Security Group (r6i.4xlarge EC2)
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_security_group" "PathnexSG" {
+  name        = "PathnexSG"
+  description = "Pathnex SG for SSH"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "PathnexEC2" {
+  ami                    = "ami-0abcd1234abcd1234"
+  instance_type          = "r6i.4xlarge"
+  vpc_security_group_ids = [aws_security_group.PathnexSG.id]
+
+  tags = {
+    Name = "Pathnex-EC2"
+  }
+}
+
+#  Writen by me this code with explanation
+
+#This tells Terraform:"Use AWS and create the resources in the us-east-1 region."
+provider "aws" {
+  region = "us-east-1"
+}
+
+#AWS will create a Security Group named:
+resource "aws_security_group" "PathnexSG" {
+  name        = "PathnexSG"
+  description = "Pathnex SG for SSH"
+
+# | Setting            | Meaning          |
+#| ------------------ | ---------------- |
+#| `ingress`          | Incoming traffic |
+#| `from_port = 22`   | Start port 22    |
+#| `to_port = 22`     | End port 22      |
+#| `protocol = "tcp"` | TCP protocol     |
+#| `0.0.0.0/0`        | Any IPv4 address |
+ingress {
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+}
+# This tells Terraform:"Create an EC2 instance."
+resource "aws_instance" "PathnexEC2" {
+# The AMI tells AWS which operating-system image to use.
+ami = "ami-0abcd1234abcd1234"
+# This specifies the EC2 hardware size.
+instance_type = "r6i.4xlarge"
+# Terraform automatically gets the Security Group ID created by
+vpc_security_group_ids = [aws_security_group.PathnexSG.id]
+# This gives the EC2 instance a name tag:
+tags = {
+  Name = "Pathnex-EC2"
+}
+
+
