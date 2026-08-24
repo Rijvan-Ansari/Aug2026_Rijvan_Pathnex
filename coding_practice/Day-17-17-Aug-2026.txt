@@ -1,0 +1,16 @@
+## 🔹 Shell Script — Loop Through List
+
+#!/bin/bash
+
+for item in Pathnex DevOps Training; do
+  echo "Item: $item"
+done
+
+# Writen by me 
+
+#!/bin/bash
+
+for item in pathnex DevOps training: do
+echo "Item: $item"
+done
+
