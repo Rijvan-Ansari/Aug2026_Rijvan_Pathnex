@@ -1,0 +1,72 @@
+## 🔹 Terraform — Create VPC + Subnet
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "PathnexVPC" {
+  cidr_block = "10.10.0.0/16"
+
+  tags = {
+    Name = "Pathnex-VPC"
+  }
+}
+
+resource "aws_subnet" "PathnexSubnet" {
+  vpc_id                  = aws_vpc.PathnexVPC.id
+  cidr_block              = "10.10.1.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "Pathnex-Subnet"
+  }
+}
+
+# Writen by me with explantion
+# Terraform ko batata hai ki AWS use karna hai aur resources us-east-1 region mein create karne hain.
+provider "aws" {
+  region = "us-east-1"
+}
+# Yahan ek VPC create ho rahi hai.
+
+#aws_vpc → Terraform ka AWS VPC resource
+#PathnexVPC → Terraform mein resource ka local name
+#10.10.0.0/16 → VPC ka IP address range
+resource "aws_vpc" "PathnexVPC" {
+  cidr_block = "10.10.0.0/16"
+
+# AWS console mein VPC ka naam Pathnex-VPC dikhega.
+tags = {
+  Name = "Pathnex-VPC"
+}
+# Ye VPC ke andar ek subnet create karega.
+resource "aws_subnet" "PathnexSubnet" {
+# Ye subnet PathnexVPC ke andar create karo.
+vpc_id = aws_vpc.PathnexVPC.id
+
+# Ye subnet ka IP range hai.
+cidr_block = "10.10.1.0/24"
+# s subnet mein launch hone wale supported instances ko launch ke time public IPv4 address automatically assign kiya ja sakta hai.
+map_public_ip_on_launch = true
+
+#--------------------------------
+
+provider "aws" {
+region= "us-east-1"
+}
+resource "aws_vpc" "pathnexVPC" {
+cidr_block = "10.10.0.0/16"
+
+tags = {
+name= "pathnex-VPC"
+}
+}
+resource "aws_subnet" "pathnexSubnet" {
+vpc_id                =aws_VPC.pathnexVPC.id
+cidr_block            ="10.10.1.0/24"
+map_puplic_ip_on_launch = true
+
+tags = {
+name = "pathnex_subnet"
+}
+}

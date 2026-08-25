@@ -1,0 +1,67 @@
+## 🔹 Ansible — Install Packages Using Variables
+
+---
+- name: Install packages for Pathnex using variables
+  hosts: all
+  become: yes
+
+  vars:
+    pathnex_packages:
+      - tree
+      - unzip
+      - vim
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name: "{{ pathnex_packages }}"
+        state: present
+
+# name → Playbook ka description/name.
+
+#hosts: all → Inventory file mein jitne bhi servers hain, un sab par task chalega.
+
+#become: yes → Ansible elevated/root privileges use karega.
+- name: Install packages for Pathnex using variables
+  hosts: all
+  become: yes
+
+# Yahan humne pathnex_packages naam ka variable banaya.
+
+#Is variable ke andar 3 packages hain:
+vars:
+  pathnex_packages:
+    - tree
+    - unzip
+    - vim
+# tasks: → Yahan actual work define hota hai.
+
+#yum: → Yum package manager use karke package install karega.
+
+#name: "{{ pathnex_packages }}" → Yahan variable ki value use ho rahi hai.
+tasks:
+  - name: Install required packages
+    yum:
+      name: "{{ pathnex_packages }}"
+      state: present
+# state: present → Ensure karta hai ki packages installed hone chahiye.
+
+#---------------------------------
+
+---
+-name: install the package for pathnex using variable
+hots: all
+becomes: yes
+
+vars:
+pathnex_packages:
+-tree
+-unzip
+-vim
+
+tasks:
+-name: install required packages
+yum:
+-name: "{{ pathnex_packages }}"
+state: present
+

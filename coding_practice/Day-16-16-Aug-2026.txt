@@ -1,0 +1,71 @@
+## 🔹 Kubernetes — Add Liveness & Readiness Probes
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pathnex-probe-pod
+spec:
+  containers:
+    - name: web
+      image: nginx
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 3
+
+# Writen by me with explantion 
+
+#apiVersion: v1 → Kubernetes API version
+#kind: Pod → Hum ek Pod create kar rahe hain.
+apiVersion: v1
+kind: Pod
+#Pod ke andar nginx container run hoga.
+containers:
+  - name: web
+    image: nginx
+# Liveness ka simple meaning:
+
+#“Application zinda/healthy hai ya nahi?”
+livenessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 5
+# Kubernetes container ke port 80 par / URL check karega.
+
+# Readiness ka meaning:
+
+#“Application traffic receive karne ke liye ready hai ya nahi?”
+readinessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 3
+
+#-----------------------------------
+
+apiVersion: v1
+kind: pod
+metadat:
+name: payhnex-probe-pod
+spec:
+containers:
+- name: web
+image: nginx
+livenessProbe:
+httpGet:
+path: /
+port: 80
+intialDelaySeconds: 5
+readnessProbe:
+httpGet:
+path: /
+port: 80
+intialDelaySeconds: 3
+
