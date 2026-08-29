@@ -1,0 +1,32 @@
+## 🔹 Terraform — Internet Gateway
+
+resource "aws_internet_gateway" "PathnexIGW" {
+  vpc_id = aws_vpc.PathnexVPC.id
+
+  tags = {
+    Name = "Pathnex-IGW"
+  }
+}
+
+#Writen by me this code 
+
+# AWS mein ek Internet Gateway create karo.
+resource "aws_internet_gateway" "PathnexIGW" {
+
+# Is Internet Gateway ko PathnexVPC ke saath attach karo.Terraform automatically PathnexVPC ka ID use karega.
+vpc_id = aws_vpc.PathnexVPC.id
+
+# AWS Console mein IGW ko identify karne ke liye naam:
+tags = {
+  Name = "Pathnex-IGW"
+}
+
+#--------------RIJVAN-ANSARI-------------
+
+resource "aws_internet_getway" "pathnexIGW" {
+vpc_id = aws_vpc.pathnexVPC.id
+tags: {
+name = "pathnex-IGW"
+}
+}
+
