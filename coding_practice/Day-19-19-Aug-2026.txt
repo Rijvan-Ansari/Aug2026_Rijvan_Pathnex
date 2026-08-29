@@ -1,0 +1,68 @@
+## 🔹 Terraform — Route Table + Association
+
+resource "aws_route_table" "PathnexRT" {
+  vpc_id = aws_vpc.PathnexVPC.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.PathnexIGW.id
+  }
+
+  tags = {
+    Name = "Pathnex-RouteTable"
+  }
+}
+
+resource "aws_route_table_association" "PathnexRTA" {
+  subnet_id      = aws_subnet.PathnexSubnet.id
+  route_table_id = aws_route_table.PathnexRT.id
+}
+
+# Writen by me with explanation 
+
+# resource "aws_route_table"Terraform ko bol rahe ho, AWS mein ek Route Table create karo."PathnexRT"Ye Terraform ka local name hai.
+resource "aws_route_table" "PathnexRT" {
+  vpc_id = aws_vpc.PathnexVPC.id
+# Is Route Table ko tumhari PathnexVPC ke saath associate kiya ja raha hai.Terraform automatically VPC ka ID retrieve karega.
+vpc_id = aws_vpc.PathnexVPC.id
+# Any IPv4 destination / anywhere on the Internet.Matlab agar traffic kisi specific internal route se match nahi karta, toh ye route use ho sakta hai.
+route {
+  cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.PathnexIGW.id
+}
+# Yahan hum bol rahe hain: 0.0.0.0/0 traffic ko Internet Gateway ke through bhejo
+gateway_id = aws_internet_gateway.PathnexIGW.id
+
+# AWS Console mein Route Table ka naam easily identify karne ke liye:
+tags = {
+  Name = "Pathnex-RouteTable"
+}
+
+# Humein Route Table ko Subnet ke saath associate karna padega.
+resource "aws_route_table_association" "PathnexRTA" {
+  subnet_id      = aws_subnet.PathnexSubnet.id
+  route_table_id = aws_route_table.PathnexRT.id
+}
+
+# Is particular subnet ko Route Table ke saath connect karo.
+subnet_id = aws_subnet.PathnexSubnet.id
+# Kaunsi Route Table use karni hai?
+route_table_id = aws_route_table.PathnexRT.id
+
+#-----------------------------------------------
+
+resource "aws_route_table" "pathnexRT" {
+vpc_id = aws_vpc.pathnexVPC.id
+
+route{
+vidr_block = "0.0.0.0/0"
+getway_id = aws_internet_getway.pathnexIGW.id
+}
+tags = {
+name = "pathnex-RouteTable"
+}
+}
+resource "aws_route_table_association" "pathnexRTA" {
+subnet_id = aws_subnet.pathnexSubnet.id
+route_table_id = aws_route_table.pathnexRT.id
+}
