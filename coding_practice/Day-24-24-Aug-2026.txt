@@ -1,0 +1,43 @@
+# Day 09 — Templates, Internet Gateway, ConfigMap, CPU Load
+
+## 🔹 Ansible — Use Jinja2 Template
+
+---
+- name: Deploy template for Pathnex
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Copy template file
+      template:
+        src: pathnex.conf.j2
+        dest: /etc/pathnex.conf
+
+# Writen by me this code 
+# Playbook ka description/name hai.
+- name: Deploy template for Pathnex
+# Inventory ke all servers par task execute hoga.
+hosts: all
+# Ansible privilege escalation karega.
+become: yes
+# Jinja2 template ko process karke target server par final configuration file create/copy karna.
+template:
+# Ye file Ansible control machine par hogi, .j2 extension ka meaning:Jinja2 template file
+src: pathnex.conf.j2
+
+# Matlab rendered template target server par yahan create hoga:
+dest: /etc/pathnex.conf
+
+
+#-------------------RIJVAN-ANSARI---------
+
+---
+-name: Deploy the template for pathnex
+hosts: all
+become: yes
+tasks:
+-name: copy template file
+template:
+src: pathnex.conf.j2
+dest: /etc/pathnex.conf
+
