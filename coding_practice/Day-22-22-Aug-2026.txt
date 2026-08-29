@@ -1,0 +1,89 @@
+# Caching Dependencies
+
+## 🔹 Jenkins Pipeline — Cache Maven Dependencies
+You will learn how to **reuse dependencies to speed up builds**.
+
+pipeline {
+    agent any
+    environment {
+        INSTITUTE_NAME = "Pathnex"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Pathnex/sample-java-app.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                if [ -d ".m2" ]; then
+                    echo "Using cached dependencies"
+                else
+                    mvn clean compile
+                fi
+                '''
+            }
+        }
+    }
+}
+
+# Writen by me with below code
+
+# Jenkins available agent/node par pipeline execute karega.
+pipeline {
+    agent any
+# Ek environment variable create kiya:Is example mein ye variable actually use nahi ho raha.
+environment {
+    INSTITUTE_NAME = "Pathnex"
+}
+# enkins GitHub repository se source code checkout karega.
+stage('Checkout') {
+    steps {
+        git url: 'https://github.com/Pathnex/sample-java-app.git'
+    }
+}
+# sh ka matlab: Jenkins agent par Shell commands execute karo.
+stage('Build') {
+    steps {
+        sh '''
+# .m2 kya hai? Maven normally dependencies ko user's Maven repository mein store karta hai:
+if [ -d ".m2" ]; then
+    echo "Using cached dependencies"
+else
+    mvn clean compile
+fi
+}
+}
+}
+}
+
+# --------------RIJVAN-ANSARI----------------
+
+# I learn how to **resorce dependenices to speed up builed**
+
+pipeline {
+agent any
+enviroment {
+INSTUTE_NAME = "pathnex"
+}
+stages {
+stage('checkout') {
+steps {
+git url: 'https://github.com/Pathnex/sample-java-app.git'
+}
+}
+stage('build') {
+steps {
+sh '''
+if [ -d ".m2" ];
+then
+echo "using chaed dependiecied"
+else
+mvn clean compile
+fi
+}
+}
+}
+}
+
