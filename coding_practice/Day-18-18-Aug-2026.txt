@@ -1,0 +1,47 @@
+# Day 10 — Conditions, Route Table, Secret, Loops
+
+## 🔹 Ansible — When Condition
+
+---
+- name: Install tool based on OS
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install htop
+      yum:
+        name: htop
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+# Ansible mein when ka use kisi task ko condition ke basis par execute karne ke liye hota
+
+# Ye playbook ka naam hai.
+- name: Install tool based on OS
+#Inventory mein jitne bhi servers hain, un sab par task check hoga.
+hosts: all
+# Matlab Ansible sudo/root privileges use karega.
+become: yes
+# Yahan se actual kaam/tasks start hote hain.
+tasks:
+#Task ka naam hai.
+- name: Install htop
+# Yahan Ansible ka yum module use ho raha hai.
+yum:
+  name: htop
+  state: present
+when: ansible_facts['os_family'] == "RedHat"
+#----------------------------------------------
+
+---
+- name: install tool based on OS
+hosts: all
+become: yes
+
+tasks:
+- name: install htop
+yum:
+name: htop
+state: present
+when: ansibal_facts['os_faimly'] == "Redhat"
+
