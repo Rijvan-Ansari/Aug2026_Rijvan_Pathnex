@@ -1,0 +1,40 @@
+## 🔹 Kubernetes — Secret
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pathnex-secret
+type: Opaque
+data:
+  password: cGF0aG5leDEyMw==   # "pathnex123" base64
+
+# Writrn by me this code with explanattion 
+
+# Ye batata hai ki Kubernetes ki kaunsi API version use ho rahi hai.
+apiVersion: v1
+
+# Kubernetes mein ek Secret object create karo.
+kind: Secret
+
+# Baad mein Pod/Deployment mein isi naam se Secret ko reference kar sakte ho
+metadata:
+  name: pathnex-secret
+# Is Secret mein normal key-value sensitive data hai.
+type: Opaque
+# Ye value Base64 encoded hai.Decode karn
+data:
+  password: cGF0aG5leDEyMw==
+key      = password
+value    = cGF0aG5leDEyMw==
+
+
+#---------------------------------
+
+apiVersion: V1
+kind: secret
+metadata:
+name: pathnex-secret
+type: opaque
+data:
+password: cGF0aG5leDEyMw==   # "pathnex123" base64
+
