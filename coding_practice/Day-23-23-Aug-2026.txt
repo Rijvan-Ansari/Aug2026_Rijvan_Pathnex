@@ -1,0 +1,59 @@
+## 🔹 GitLab CI — Cache Dependencies
+You will learn how to **cache dependencies in GitLab CI**.
+
+stages:
+  - build
+
+build:
+  stage: build
+  image: maven:3.8.1-jdk-17
+  cache:
+    key: maven-cache
+    paths:
+      - .m2/repository
+  script:
+    - git clone https://github.com/Pathnex/sample-java-app.git
+    - cd sample-java-app
+    - mvn clean compile
+
+# Writen by me this code 
+
+# Yahan hum pipeline ka stage define kar rahe hain.
+stages:
+  - build
+
+# build job ka naam hai, Ye job build stage ke andar execute hogi.
+build:
+  stage: build
+
+# Maven 3.8.1 + JDK 17 wale Docker container mein. Isse build environment consistent rehta hai.
+image: maven:3.8.1-jdk-17
+# Cache ko ek naam/key diya, GitLab isi key ke basis par cache identify karta hai,Yahan Maven downloaded dependencies store karega.
+cache:
+  key: maven-cache
+  paths:
+    - .m2/repository
+# GitHub se project download karega.Project directory ke andar chale jao,Maven build karega,Previous build output ko clean karta hai.#,Java source code ko compile karta hai.
+script:
+  - git clone https://github.com/Pathnex/sample-java-app.git
+  - cd sample-java-app
+  - mvn clean compile
+
+#--------------------------RIJVAN-ANSARI---------------
+# We learn how to ** chache dependicies in GITLAB CI**
+
+stages:
+-build
+
+build:
+stage: build
+image: maven:3.8.1-jdk-17
+chache:
+key: maven-cache
+paths:
+- .m2/repository
+script:
+- git clone https://github.com/Pathnex/sample-java-app.git
+- cd sample-java-app
+- mvn clean compile
+

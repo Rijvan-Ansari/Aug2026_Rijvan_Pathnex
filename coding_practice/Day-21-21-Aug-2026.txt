@@ -1,0 +1,34 @@
+## 🔹 Shell Script — For Loop 1–10
+
+#!/bin/bash
+
+for i in {1..10}; do
+  echo "Number: $i"
+done
+
+# Writen by me with explanation 
+# Isko shebang bolte hain.
+#!/bin/bash
+
+# Yahan i ek variable hai.{1..10} Bash ka range expansion hai.
+for i in {1..10}
+
+# Ab loop ke andar jo commands hain, unko execute karo.
+do
+
+# echo screen par output print karta hai. $i ka matlab: Variable i ki current value.
+echo "Number: $i"
+
+# done batata hai ki loop ka block yahan end ho gaya.
+done
+
+
+
+#--------------------------------------
+
+#!/bin/bash
+for i in {1..10};
+do
+echo "Number: $i"
+done
+
