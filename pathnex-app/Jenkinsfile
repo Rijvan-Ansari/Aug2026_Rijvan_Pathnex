@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out Pathnex source code...'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t pathnex-app:${BUILD_NUMBER} pathnex-app'
+            }
+        }
+
+        stage('Test Application') {
+            steps {
+                sh 'docker images pathnex-app'
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo 'Pathnex CI pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pathnex CI pipeline failed.'
+        }
+    }
+}
